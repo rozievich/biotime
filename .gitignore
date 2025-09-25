@@ -1,0 +1,43 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+
+# PyInstaller
+*.spec
+
+# IDE va editor sozlamalari
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test natijalari
+.coverage
+*.log
+htmlcov/
+
+# OS fayllari
+.DS_Store
+Thumbs.db
+
+# PyPI / wheel build artifacts
+*.tar.gz
+*.whl
+
+# Local config
+*.env
+.env.*
