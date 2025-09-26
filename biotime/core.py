@@ -93,6 +93,82 @@ class BIOT:
         return self.request(method="DELETE", endpoint=f"personnel/api/areas/{area_id}/")
     
 
+    # Department methods
+    def get_all_department(self, page=None, page_size=None, dept_code=None, dept_name=None, dept_code_icontains=None, dept_name_icontains=None, ordering=None) -> json:
+        """The ordering field can be filled in: id, dept_code, dept_name"""
+        params = {
+            "page": page,
+            "page_size": page_size,
+            "dept_code": dept_code,
+            "dept_name": dept_name,
+            "dept_code_icontains": dept_code_icontains,
+            "dept_name_icontains": dept_name_icontains,
+            "ordering": ordering
+        }
+        response = self.request(method="GET", endpoint="personnel/api/departments/", params=params)
+        return response
+
+    def get_department(self, department_id: int) -> json:
+        return self.request(method="GET", endpoint=f"personnel/api/departments/{department_id}/")
+
+    def create_department(self, dept_name: str, dept_code: str, parent_dept: int | None = None) -> json:
+        data = {
+            "dept_code": dept_code,
+            "dept_name": dept_name,
+            "parent_dept": parent_dept
+        }
+        return self.request(method="POST", endpoint="personnel/api/departments/", data=json.dumps(data))
+
+    def update_department(self, department_id: int, dept_name: str, dept_code: str, parent_dept: int | None = None) -> json:
+        data = {
+            "dept_code": dept_code,
+            "dept_name": dept_name,
+            "parent_dept": parent_dept
+        }
+        return self.request(method="PUT", endpoint=f"personnel/api/departments/{department_id}/", data=json.dumps(data))
+    
+    def delete_department(self, department_id: int) -> json:
+        return self.request(method="DELETE", endpoint=f"personnel/api/departments/{department_id}/")
+    
+
+    # Position methods
+    def get_all_position(self, page=None, page_size=None, position_code=None, position_name=None, position_code_icontains=None, position_name_icontains=None, ordering=None) -> json:
+        """The ordering field can be filled in: id, position_code, position_name"""
+        params = {
+            "page": page,
+            "page_size": page_size,
+            "position_code": position_code,
+            "position_name": position_name,
+            "position_code_icontains": position_code_icontains,
+            "position_name_icontains": position_name_icontains,
+            "ordering": ordering
+        }
+        response = self.request(method="GET", endpoint="personnel/api/positions/", params=params)
+        return response
+    
+    def get_position(self, position_id: int) -> json:
+        return self.request(method="GET", endpoint=f"personnel/api/positions/{position_id}/")
+    
+    def create_position(self, position_name: str, position_code: str, parent_position: int | None=None) -> json:
+        data = {
+            "position_code": position_code,
+            "position_name": position_name,
+            "parent_position": parent_position
+        }
+        return self.request(method="POST", endpoint="personnel/api/positions/", data=json.dumps(data))
+
+    def update_position(self, position_id: int, position_name: str, position_code: str, parent_position: int | None=None) -> json:
+        data = {
+            "position_code": position_code,
+            "position_name": position_name,
+            "parent_position": parent_position
+        }
+        return self.request(method="PUT", endpoint=f"personnel/api/positions/{position_id}/", data=json.dumps(data))
+    
+    def delete_position(self, position_id: int) -> json:
+        return self.request(method="DELETE", endpoint=f"personnel/api/positions/{position_id}/")
+    
+    
     # Employee methods
     def get_all_employee(
             self, 
